@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" formControlName="email" id="email">
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" formControlName="name" id="name">
+      </div>
+      <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea class="form-control" formControlName="bio" id="bio"></textarea>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" formControlName="active" id="active">
+        <label class="form-check-label" for="active">Active</label>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+  </div>
+  
+  <div *ngIf="submitted && formData" class="container mt-4">
+    <h2>Submitted Details</h2>
+    <p><strong>Email:</strong> {{ formData.email }}</p>
+    <p><strong>Name:</strong> {{ formData.name }}</p>
+    <p><strong>Bio:</strong> {{ formData.bio }}</p>
+    <p><strong>Active:</strong> {{ formData.active ? 'Yes' : 'No' }}</p>
+  </div>
+  

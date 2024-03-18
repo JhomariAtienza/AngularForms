@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <form [formGroup]="blogForm" (ngSubmit)="saveBlog()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" formControlName="title" id="title">
+      </div>
+    
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" formControlName="description" id="description"></textarea>
+      </div>
+    
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" class="form-control" formControlName="author" id="author">
+      </div>
+    
+      <div class="form-group" formArrayName="comments">
+        <label for="comments">Comments</label>
+        <div *ngFor="let commentControl of commentControls.controls; let i = index" class="input-group mb-2">
+          <input type="text" class="form-control" [formControlName]="i">
+          <div class="input-group-append">
+            <button type="button" class="btn btn-danger" (click)="removeComment(i)">Remove</button>
+          </div>
+        </div>
+      </div>
+    
+      <button type="button" class="btn btn-primary" (click)="addComment()">Add Comment</button>
+      <button type="submit" class="btn btn-success">Save</button>
+    </form>
+  </div>
+  

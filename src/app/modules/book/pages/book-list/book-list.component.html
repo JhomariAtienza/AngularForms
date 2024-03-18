@@ -1,0 +1,23 @@
+<br>
+
+<div *ngIf="isListView">
+    &nbsp;
+    <button (click)="onAddClicked()" class="btn btn-primary mb-3">Add</button>
+    &nbsp;
+    <button (click)="onDeleteAllClicked()" class="btn btn-danger mb-3 ml-2">Delete All</button> <!-- Added Delete All button -->
+
+    <div class="container" *ngIf="savedBooks.length > 0">
+      <h2>Saved Books</h2>
+      <ul class="list-group">
+        <li *ngFor="let book of savedBooks" class="list-group-item">
+          <h3>Name: {{ book.name }}</h3>
+          <p>Authors: {{ book.authors.join(', ') }}</p>
+          <p>ISBN: {{ book.isbn }}</p>
+          <button (click)="onEditClicked(book)" class="btn btn-primary">Edit</button>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="savedBooks.length === 0">
+      No books available.
+    </div>
+  </div>

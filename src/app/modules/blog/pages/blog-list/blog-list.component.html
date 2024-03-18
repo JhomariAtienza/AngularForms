@@ -1,0 +1,24 @@
+
+<br>
+<div *ngIf="isListView">
+    &nbsp;
+    <button (click)="onAddClicked()" class="btn btn-primary mb-3">Add</button>
+    &nbsp;
+    <button (click)="onDeleteAllClicked()" class="btn btn-danger mb-3 ml-2">Delete All</button> 
+
+<div class="container mt-4" *ngIf="savedBlogs.length > 0">
+  <h2>Saved Blogs</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let blog of savedBlogs">
+      <h3 class="mb-1">Title: {{ blog.title }}</h3>
+      <p class="mb-1">Description: {{ blog.description }}</p>
+      <p class="mb-1">Author: {{ blog.author }}</p>
+      <p>Comments:</p>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let comment of blog.comments">{{ comment }}</li>
+      </ul>
+      <br>
+      <button (click)="onEditClicked(blog)" class="btn btn-primary">Edit</button>
+    </li>
+  </ul>
+</div>

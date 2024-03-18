@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <form [formGroup]="bookForm" (ngSubmit)="saveBook()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" id="name" class="form-control">
+      </div>
+  
+      <!-- Initial author input field
+      <div class="form-group">
+        <label for="authors">Author</label>
+        <input type="text" formControlName="authors" id="authors" class="form-control">
+      </div>
+   -->
+      <!-- Dynamic author fields -->
+      <div class="form-group" formArrayName="authors">
+        <label for="authors">Author</label>
+        <div *ngFor="let authorControl of authorControls.controls; let i = index" class="d-flex mb-2">
+          <input [formControlName]="i" class="form-control mr-2">
+          <button type="button" (click)="removeAuthor(i)" class="btn btn-danger">Remove</button>
+        </div>
+      </div>
+      <button type="button" (click)="addAuthor()" class="btn btn-primary mt-2">Add Author</button>
+    
+      <div class="form-group">
+        <label for="isbn">ISBN</label>
+        <input type="text" formControlName="isbn" id="isbn" class="form-control">
+      </div>
+  
+      <button type="submit" class="btn btn-success">Save</button>
+    </form>
+  </div>
+  
